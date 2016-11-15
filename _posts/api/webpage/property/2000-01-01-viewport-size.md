@@ -27,15 +27,16 @@ You must include height for this to work.
 ```javascript
 var page = require('webpage').create(),
 	address, output, size;
+var  system = require('system');
 
-if (phantom.args.length < 4 || phantom.args.length > 5) {
+if (system.args.length < 4 || system.args.length > 5) {
     console.log('Usage: viewport.js URL filename sizeX sizeY');
     phantom.exit();
 } else {
-    address = phantom.args[0];
-    output = phantom.args[1];
-    sizeX = phantom.args[2];
-    sizeY = phantom.args[3];
+    address = system.args[1];
+    output = system.args[2];
+    sizeX = system.args[3];
+    sizeY = system.args[4];
     page.viewportSize = { width: sizeX, height: sizeY };
     page.open(address, function (status) {
         if (status !== 'success') {
